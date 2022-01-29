@@ -1,0 +1,7 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: release-name-example-argocd-canary
+spec:
+  progressDeadlineAbort: true
+  progressDeadlineSeconds: 60

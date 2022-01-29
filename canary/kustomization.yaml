@@ -1,0 +1,10 @@
+namePrefix: kustomize-
+
+commonLabels:
+  publisher: lenz
+
+resources:
+- ./all.yaml
+
+patches:
+- overlays/progressDeadlineAbort-rollout.yaml
