@@ -23,6 +23,6 @@ version: 0.1.0
 appVersion: "1.0"
 
 dependencies:
-- name: helm-guestbook
+- name: example-argocd-bluegreen
   version: 0.1.0
   repository: https://christopherlenz.github.io/meecothon-helm-chart/
