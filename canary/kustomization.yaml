@@ -1,5 +1,3 @@
-namePrefix: kustomize-
-
 commonLabels:
   publisher: lenz
 
