@@ -7,7 +7,7 @@ spec:
     canary:
       analysis:
         templates:
-        - templateName: error-rate
+        - templateName: load-test
       canaryService: release-name-example-argocd-canary-linkerd-canary
       stableService: release-name-example-argocd-canary-linkerd-stable
       trafficRouting:
