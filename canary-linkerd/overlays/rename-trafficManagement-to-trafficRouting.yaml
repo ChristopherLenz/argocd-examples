@@ -5,6 +5,9 @@ metadata:
 spec:
   strategy:
     canary:
+      analysis:
+        templates:
+        - templateName: error-rate
       canaryService: release-name-example-argocd-canary-linkerd-canary
       stableService: release-name-example-argocd-canary-linkerd-stable
       trafficRouting:

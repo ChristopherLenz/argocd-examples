@@ -1,30 +1,17 @@
-kind: AnalysisTemplate
 apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
 metadata:
-  name: load-test
+  name: error-rate
 spec:
   args:
-    - name: namespace
-    - name: linkerd-enabled
-      value: enabled
+  - name: service-name
   metrics:
-    - name: pass
-      interval: 5s
-      failureLimit: 1
-      provider:
-        job:
-          spec:
-            template:
-              metadata:
-                annotations:
-                  linkerd.io/inject: "{{ args.linkerd-enabled }}"
-              spec:
-                restartPolicy: Never
-                containers:
-                  - name: load-tester
-                    image: argoproj/load-tester:latest
-                    command: [sh, -c, -x, -e]
-                    args:
-                      - |
-                        wrk -t10 -c40 -d45s -s report.lua http://release-name-example-argocd-canary-linkerd.{{ args.namespace }}.svc/color
-                        jq -e '.errors_ratio <= 0.35 and .latency_avg_ms < 100' report.json
+  - name: error-rate
+    interval: 5m
+    successCondition: result[0] <= 0.95
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.linkerd-viz.svc.cluster.local
+        query: |
+          sum(irate(response_total{classification="success", namespace="default", direction="inbound", app="example-argocd-canary-linkerd"}[5m])) by (deployment) / sum(irate(response_total{namespace="default", direction="inbound", app="example-argocd-canary-linkerd"}[5m]))
