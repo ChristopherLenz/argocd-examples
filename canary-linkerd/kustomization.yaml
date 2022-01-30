@@ -1,2 +1,7 @@
 resources:
 - ./all.yaml
+
+patches:
+- path: overlays/rename-trafficManagement-to-trafficRouting.yaml
+  target:
+    kind: Rollout
