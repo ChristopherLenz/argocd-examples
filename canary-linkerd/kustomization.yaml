@@ -5,3 +5,4 @@ patches:
 - path: overlays/rename-trafficManagement-to-trafficRouting.yaml
   target:
     kind: Rollout
+- path: overlays/correct-analysis-service-ref.yaml

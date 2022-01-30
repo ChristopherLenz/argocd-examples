@@ -5,6 +5,8 @@ metadata:
 spec:
   strategy:
     canary:
+      canaryService: release-name-example-argocd-canary-linkerd-canary
+      stableService: release-name-example-argocd-canary-linkerd-stable
       trafficRouting:
         smi:
           rootService: rollout-linkerd
