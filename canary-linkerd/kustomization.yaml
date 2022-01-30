@@ -1,5 +1,2 @@
 resources:
 - ./all.yaml
-
-patches:
-- overlays/progressDeadlineAbort-rollout.yaml
