@@ -10,6 +10,6 @@ spec:
     failureLimit: 3
     provider:
       prometheus:
-        address: http://prometheus.linkerd-viz.svc.cluster.local
+        address: http://prometheus.linkerd-viz.svc.cluster.local:9090
         query: |
           sum(irate(response_total{classification="success", namespace="default", direction="inbound", app="example-argocd-canary-linkerd"}[5m])) by (deployment) / sum(irate(response_total{namespace="default", direction="inbound", app="example-argocd-canary-linkerd"}[5m]))

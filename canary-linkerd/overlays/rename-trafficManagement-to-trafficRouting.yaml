@@ -8,6 +8,9 @@ spec:
       analysis:
         templates:
         - templateName: load-test
+        args:
+        - name: namespace
+          value: default
       canaryService: release-name-example-argocd-canary-linkerd-canary
       stableService: release-name-example-argocd-canary-linkerd-stable
       trafficRouting:
