@@ -1,3 +1,3 @@
 example-argocd-canary:
   image:
-    tag: unknown
+    tag: blue
